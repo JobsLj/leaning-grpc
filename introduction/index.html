@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>google grpc 介绍 | Leaning Grpc</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="skyao">
+        <meta name="description" content="Records in leaning google grpc">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="../introduction/information.html" />
+        
+        
+        <link rel="prev" href="../index.html" />
+        
+
+        <meta property="og:title" content="google grpc 介绍 | Leaning Grpc">
+        <meta property="og:site_name" content="Leaning Grpc">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/skyao">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="..\gitbook/images/favicon.ico" type="image/x-icon">
+        
+    </head>
+    <body>
+        
+        <link rel="stylesheet" href="..\gitbook/style.css">
+        
+        
+    <div class="book" data-github="skyao/leaning-grpc" data-level="1" data-basepath=".." data-revision="1425649303659">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/skyao/leaning-grpc" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/skyao/leaning-grpc/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/skyao/leaning-grpc/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="../" >Leaning Grpc</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/skyao" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/skyao/leaning-grpc/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/skyao/leaning-grpc/edit/master/introduction/index.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="introduction/index.html">
+                
+                <a href="../introduction/index.html">
+                    <i class="fa fa-check"></i> <b>1.</b> google grpc 介绍
+                </a>
+                
+                
+                <ul class="articles">
+                    
+                        <li  data-level="1.1" data-path="introduction/information.html">
+                            
+                            <a href="../introduction/information.html">
+                                <i class="fa fa-check"></i> <b>1.1.</b> google grpc 信息
+                            </a>
+                            
+                        </li>
+                    
+                        <li  data-level="1.2" data-path="introduction/data-collection.html">
+                            
+                            <a href="../introduction/data-collection.html">
+                                <i class="fa fa-check"></i> <b>1.2.</b> google grpc 资料收集
+                            </a>
+                            
+                        </li>
+                    
+                </ul>
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 33.333333333333336%;min-width: 0%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../introduction/index.html" title="google grpc 介绍" class="chapter done new-chapter" data-progress="1" style="left: 33.333333333333336%;"></a>
+    
+        <a href="../introduction/information.html" title="google grpc 信息" class="chapter  " data-progress="1.1" style="left: 66.66666666666667%;"></a>
+    
+        <a href="../introduction/data-collection.html" title="google grpc 资料收集" class="chapter  " data-progress="1.2" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_3">
+                    
+                        <h1 id="google-grpc-">google grpc 介绍</h1>
+<p>================</p>
+<p>grpc是google最新发布(2015年2月底)的开源rpc框架。</p>
+<p>按照google的说法，grpc是：</p>
+<p><strong>A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.</strong></p>
+<p>一个高性能，开源，将移动和HTTP/2放在首位的通用的RPC框架.</p>
+<h1 id="-">特性</h1>
+<h2 id="http-2">HTTP/2</h2>
+<p>构建于HTTP/2标准，带来很多功能，如：</p>
+<ul>
+<li>bidirectional streaming</li>
+<li>flow control</li>
+<li>header compression</li>
+<li>multiplexing requests over a single TCP connection</li>
+</ul>
+<h2 id="mobile">mobile</h2>
+<p>这些特性在移动设备上节约电池使用时间和数据使用，加速服务和运行在云上的web应用。</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../introduction/information.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="..\gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="..\gitbook/app.js"></script>
+        
+    </body>
+</html>
