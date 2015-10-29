@@ -5,22 +5,24 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Introduction | Leaning Grpc</title>
+        <title>风格指南 | Leaning Grpc</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Records in leaning google grpc">
+        <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
         
     
     
-    <link rel="next" href="./introduction/index.html" />
+    <link rel="next" href="../proto3/encoding.html" />
     
+    
+    <link rel="prev" href="../proto3/language_guide.html" />
     
 
         
@@ -28,11 +30,11 @@
     <body>
         
         
-<link rel="stylesheet" href="gitbook/style.css">
+<link rel="stylesheet" href="../gitbook/style.css">
 
 
         
-    <div class="book" data-level="0" data-basepath="." data-revision="1446132596304">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="1446132596304">
     
 
 <div class="book-summary">
@@ -50,10 +52,10 @@
         
     
         
-        <li class="chapter active" data-level="0" data-path="index.html">
+        <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="./index.html">
+                    <a href="../index.html">
                         <i class="fa fa-check"></i>
                         
                          Introduction
@@ -67,7 +69,7 @@
         <li class="chapter " data-level="1" data-path="introduction/index.html">
             
                 
-                    <a href="./introduction/index.html">
+                    <a href="../introduction/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
@@ -84,7 +86,7 @@
         <li class="chapter " data-level="1.1" data-path="introduction/information.html">
             
                 
-                    <a href="./introduction/information.html">
+                    <a href="../introduction/information.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
@@ -114,7 +116,7 @@
         <li class="chapter " data-level="2.1" data-path="proto3/language_guide.html">
             
                 
-                    <a href="./proto3/language_guide.html">
+                    <a href="../proto3/language_guide.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
@@ -127,10 +129,10 @@
         </li>
     
         
-        <li class="chapter " data-level="2.2" data-path="proto3/style_guide.html">
+        <li class="chapter active" data-level="2.2" data-path="proto3/style_guide.html">
             
                 
-                    <a href="./proto3/style_guide.html">
+                    <a href="../proto3/style_guide.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -146,7 +148,7 @@
         <li class="chapter " data-level="2.3" data-path="proto3/encoding.html">
             
                 
-                    <a href="./proto3/encoding.html">
+                    <a href="../proto3/encoding.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.3.</b>
@@ -244,7 +246,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="./" >Leaning Grpc</a>
+        <a href="../" >Leaning Grpc</a>
     </h1>
 </div>
 
@@ -252,12 +254,40 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_2">
+                    <section class="normal" id="section-gitbook_5">
                     
-                        <h1 id="grpc">Grpc学习笔记</h1>
-<p>这是一份个人的学习笔记，用于记录google grpc学习过程的各种信息和心得。</p>
-<p>请点击 <a href="http://skyao.github.io/leaning-grpc/" target="_blank">这里</a> 查看该笔记的具体内容，目前发布于 Github Pages. </p>
-<p>备注： 本笔记基于  <a href="http://www.gitbook.io/" target="_blank">gitbook</a> 制作，内容可以任意分享和转载。</p>
+                        <h1 id="">风格指南</h1>
+<p>注: 内容翻译来自官网资料 <a href="https://developers.google.com/protocol-buffers/docs/style" target="_blank">Style Guide</a>.</p>
+<p>这个文档为.proto文件提供风格指南. 通过遵循下列约定, 可以让protocol buffer消息定义和他们对应的类保持一致并容易阅读.</p>
+<h1 id="">消息和字段名</h1>
+<p>消息名使用驼峰法 - 例如, SongServerRequest. 字段名私用下划线分隔名 - 例如, song_name.</p>
+<pre><code class="lang-java">message SongServerRequest {
+  required string song_name = <span class="hljs-number">1</span>;
+}
+</code></pre>
+<p>为字段名使用这种命名约定可以得到如下的访问器:</p>
+<p>C++:</p>
+<pre><code class="lang-java">  <span class="hljs-keyword">const</span> string&amp; song_name() { ... }
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_song_name</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string&amp; x)</span> </span>{ ... }
+</code></pre>
+<p>Java:</p>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSongName</span><span class="hljs-params">()</span> </span>{ ... }
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Builder <span class="hljs-title">setSongName</span><span class="hljs-params">(String v)</span> </span>{ ... }
+</code></pre>
+<h1 id="">枚举</h1>
+<p>枚举类型名使用驼峰法(首字母大写), 值的名字使用大写加下划线分隔:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">enum</span> Foo {
+  FIRST_VALUE = <span class="hljs-number">1</span>;
+  SECOND_VALUE = <span class="hljs-number">2</span>;
+}
+</code></pre>
+<p>每个枚举值以分号(;)结束, 不要用逗号(,).</p>
+<h1 id="">服务</h1>
+<p>如果.proto文件定义RPC服务, 服务名和任何rpc方法应该用驼峰法(首字母大写):</p>
+<pre><code class="lang-java">service FooService {
+  <span class="hljs-function">rpc <span class="hljs-title">GetSomething</span><span class="hljs-params">(FooRequest)</span> <span class="hljs-title">returns</span> <span class="hljs-params">(FooResponse)</span></span>;
+}
+</code></pre>
 
                     
                     </section>
@@ -268,21 +298,23 @@
         </div>
 
         
+        <a href="../proto3/language_guide.html" class="navigation navigation-prev " aria-label="Previous page: 语言指南"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./introduction/index.html" class="navigation navigation-next navigation-unique" aria-label="Next page: google grpc 介绍"><i class="fa fa-angle-right"></i></a>
+        
+        <a href="../proto3/encoding.html" class="navigation navigation-next " aria-label="Next page: 编码"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="gitbook/app.js"></script>
+<script src="../gitbook/app.js"></script>
 
     
     <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
     
-    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
     
 
 <script>
