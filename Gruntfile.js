@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 root: '_book',
 
                 port: 4000,
-                host: "localhost",
+                host: "0.0.0.0",
 
                 showDir : true,
                 autoIndex: true,

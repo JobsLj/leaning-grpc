@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Java Generated Code | Leaning gRPC</title>
+        <title>字段 | Leaning gRPC</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -19,10 +19,10 @@
         
     
     
-    <link rel="next" href="../../../proto3/reference/java/compiler_invocation.html" />
+    <link rel="next" href="../../../proto3/reference/java/any.html" />
     
     
-    <link rel="prev" href="../../../proto3/reference/index.html" />
+    <link rel="prev" href="../../../proto3/reference/java/messages.html" />
     
 
         <!-- head:end -->
@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="2.2.1" data-basepath="../../.." data-revision="1459186141668">
+    <div class="book" data-level="2.2.1.4" data-basepath="../../.." data-revision="1459186141668">
     
 
 <div class="book-summary">
@@ -251,7 +251,7 @@
                 
     
         
-        <li class="chapter active" data-level="2.2.1" data-path="proto3/reference/java/index.html">
+        <li class="chapter " data-level="2.2.1" data-path="proto3/reference/java/index.html">
             
                 
                     <a href="../../../proto3/reference/java/index.html">
@@ -316,7 +316,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.2.1.4" data-path="proto3/reference/java/fileds.html">
+        <li class="chapter active" data-level="2.2.1.4" data-path="proto3/reference/java/fileds.html">
             
                 
                     <a href="../../../proto3/reference/java/fileds.html">
@@ -661,16 +661,19 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_9">
+                    <section class="normal" id="section-gitbook_13">
                     
-                        <h1 id="java">Java生成代码</h1>
+                        <h1 id="">字段</h1>
 <blockquote>
-<p>注： 内容来自官网资料 <a href="https://developers.google.com/protocol-buffers/docs/reference/java-generated" target="_blank">Java Generated Code</a></p>
+<p>注：内容翻译自官网文档 <a href="https://developers.google.com/protocol-buffers/docs/reference/java-generated#fields" target="_blank">Packages</a></p>
 </blockquote>
-<p>这个页面准确描述 protocol buffer 编译器为任何给定协议定义生成的java代码。proto2和proto3生成的代码之间的任何不同都将被高亮 - 注意在这份文档中描述的是这些生成代码的不同，而不是基本的消息类/接口，后者在两个版本中是相同的。在阅读这份文档之前你应该先阅读 proto2语言指南 和/或 proto3语言指南。</p>
-<blockquote>
-<p>说明：这个文档的英文原文是放在一个页面中，有点长，阅读起来比较累，因此我翻译时按照章节拆分为多个页面。</p>
-</blockquote>
+<p>除了在前一节描述的方法之外，protocol buffer编译器为每个字段生成访问器方法集合</p>
+<p>In addition to the methods described in the previous section, the protocol buffer compiler generates a set of accessor methods for each field defined within the message in the .proto file. The methods that read the field value are defined both in the message class and its corresponding builder; the methods that modify the value are only defined in the builder only.</p>
+<p>Note that method names always use camel-case naming, even if the field name in the .proto file uses lower-case with underscores (as it should). The case-conversion works as follows:</p>
+<p>For each underscore in the name, the underscore is removed, and the following letter is capitalized.
+If the name will have a prefix attached (e.g. &quot;get&quot;), the first letter is capitalized. Otherwise, it is lower-cased.
+Thus, the field foo_bar_baz becomes fooBarBaz. If prefixed with get, it would be getFooBarBaz.</p>
+<p>As well as accessor methods, the compiler generates an integer constant for each field containing its field number. The constant name is the field name converted to upper-case followed by _FIELD_NUMBER. For example, given the field optional int32 foo_bar = 5;, the compiler will generate the constant public static final int FOO_BAR_FIELD_NUMBER = 5;.</p>
 
                     
                     </section>
@@ -681,10 +684,10 @@
         </div>
 
         
-        <a href="../../../proto3/reference/index.html" class="navigation navigation-prev " aria-label="Previous page: API参考文档"><i class="fa fa-angle-left"></i></a>
+        <a href="../../../proto3/reference/java/messages.html" class="navigation navigation-prev " aria-label="Previous page: 消息"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../../proto3/reference/java/compiler_invocation.html" class="navigation navigation-next " aria-label="Next page: 编译器调用"><i class="fa fa-angle-right"></i></a>
+        <a href="../../../proto3/reference/java/any.html" class="navigation navigation-next " aria-label="Next page: Any"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
