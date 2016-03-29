@@ -38,7 +38,7 @@
 
 
         
-    <div class="book" data-level="2.2.1.6" data-basepath="../../.." data-revision="1459186424158">
+    <div class="book" data-level="2.2.1.6" data-basepath="../../.." data-revision="1459248564273">
     
 
 <div class="book-summary">
@@ -140,7 +140,7 @@
                         
                             <b>2.1.</b>
                         
-                         开发指南
+                         开发指南(翻译)
                     </a>
                 
             
@@ -157,7 +157,7 @@
                         
                             <b>2.1.1.</b>
                         
-                         概述(翻译)
+                         概述
                     </a>
                 
             
@@ -173,7 +173,7 @@
                         
                             <b>2.1.2.</b>
                         
-                         语言指南(翻译)
+                         语言指南
                     </a>
                 
             
@@ -189,7 +189,7 @@
                         
                             <b>2.1.3.</b>
                         
-                         风格指南(翻译)
+                         风格指南
                     </a>
                 
             
@@ -205,7 +205,7 @@
                         
                             <b>2.1.4.</b>
                         
-                         编码(翻译)
+                         编码
                     </a>
                 
             
@@ -221,7 +221,7 @@
                         
                             <b>2.1.5.</b>
                         
-                         技巧(翻译)
+                         技巧
                     </a>
                 
             
@@ -259,7 +259,7 @@
                         
                             <b>2.2.1.</b>
                         
-                         Java Generated Code
+                         Java Generated Code(翻译)
                     </a>
                 
             
@@ -389,38 +389,6 @@
                             <b>2.2.1.8.</b>
                         
                          扩展
-                    </a>
-                
-            
-            
-        </li>
-    
-        
-        <li class="chapter " data-level="2.2.1.9" data-path="proto3/reference/java/services.html">
-            
-                
-                    <a href="../../../proto3/reference/java/services.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.1.9.</b>
-                        
-                         服务
-                    </a>
-                
-            
-            
-        </li>
-    
-        
-        <li class="chapter " data-level="2.2.1.10" data-path="proto3/reference/java/plugin_insertion_points.html">
-            
-                
-                    <a href="../../../proto3/reference/java/plugin_insertion_points.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.1.10.</b>
-                        
-                         插件插入点
                     </a>
                 
             
@@ -660,6 +628,45 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="page-inner">
                 
+                
+                    <section class="normal" id="section-gitbook_16">
+                    
+                        <h1 id="oneof">Oneof</h1>
+<blockquote>
+<p>注：内容翻译自官网参考文档中 Java Generated Code 的 <a href="https://developers.google.com/protocol-buffers/docs/reference/java-generated#oneof" target="_blank">oneof</a> 一节。</p>
+</blockquote>
+<p>给假设有一个类似这样的oneof定义：</p>
+<pre><code class="lang-java">oneof oneof_name {
+    int32 foo_int = <span class="hljs-number">4</span>;
+    string foo_string = <span class="hljs-number">9</span>;
+    ...
+}
+</code></pre>
+<p>在 oneof_name 这个 oneof 中的所有字段将为他们的值使用共享的 oneof_name 对象。此外，protocol buffer compiler 将为每个oneof case生成一个Java枚举类型，如下所示：</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> OneofNameCase implements com.google.protobuf.Internal.EnumLite {
+    FOO_INT(<span class="hljs-number">4</span>),
+    FOO_STRING(<span class="hljs-number">9</span>),
+    ...
+    ONEOF_NAME_NOT_SET(<span class="hljs-number">0</span>);
+    ...
+};
+</code></pre>
+<p>这个枚举类型的值有下列特殊方法：</p>
+<ul>
+<li>int getNumber(): 返回对象在.proto文件中定义的编号</li>
+<li>static Foo valueOf(int value): 返回对应给定编号的枚举对象，对于其他编号则返回null。</li>
+</ul>
+<p>编译器也将在消息类和它的builder中生成下列访问方法：</p>
+<ul>
+<li>OneofNameCase getOneofNameCase(): 返回枚举指示哪个字段被设置。如果一个都没有设置返回 ONEOF_NAME_NOT_SET</li>
+</ul>
+<p>编译器将仅在消息的builder中生成下列方法：</p>
+<ul>
+<li>Builder clearOneofName(): 设置 oneof_name 为null，并设置 oneof case 为ONEOF_NAME_NOT_SET</li>
+</ul>
+
+                    
+                    </section>
                 
                 
                 </div>
