@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>文档生成 | Leaning gRPC</title>
+        <title>类CallOptions | Leaning gRPC</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -19,8 +19,10 @@
         
     
     
+    <link rel="next" href="../../action/index.html" />
     
-    <link rel="prev" href="../../action/springboot/springboot.html" />
+    
+    <link rel="prev" href="../../sourcecode/common/index.html" />
     
 
         <!-- head:end -->
@@ -36,7 +38,7 @@
 
 
         
-    <div class="book" data-level="5.2" data-basepath="../.." data-revision="1460301822824">
+    <div class="book" data-level="4.3.1" data-basepath="../.." data-revision="1460301822824">
     
 
 <div class="book-summary">
@@ -341,7 +343,7 @@
                 
     
         
-        <li class="chapter " data-level="4.3.1" data-path="sourcecode/common/class_CallOptions.html">
+        <li class="chapter active" data-level="4.3.1" data-path="sourcecode/common/class_CallOptions.html">
             
                 
                     <a href="../../sourcecode/common/class_CallOptions.html">
@@ -400,7 +402,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="5.2" data-path="action/documentation/index.html">
+        <li class="chapter " data-level="5.2" data-path="action/documentation/index.html">
             
                 
                     <a href="../../action/documentation/index.html">
@@ -509,37 +511,81 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_12">
+                    <section class="normal" id="section-gitbook_6">
                     
-                        <h1 id="">文档生成</h1>
-<h1 id="protoc-gen-doc">protoc-gen-doc</h1>
-<p><a href="https://github.com/estan/protoc-gen-doc" target="_blank">https://github.com/estan/protoc-gen-doc</a></p>
-<blockquote>
-<p>这是一个Google Protocol Buffers编译器(protoc)的文档生成插件。这个插件可以从.proto文件中的注释内容生成HTML, DocBook 或者 Markdown 文档。</p>
-</blockquote>
-<h2 id="">安装</h2>
-<p>参考 <a href="https://github.com/estan/protoc-gen-doc" target="_blank">protoc-gen-doc</a> Installation章节的信息。</p>
-<h3 id="linux">linux安装</h3>
-<p>对于ubuntu系统，参考 <a href="https://software.opensuse.org/download.html?project=home%3Aestan%3Aprotoc-gen-doc&amp;package=protoc-gen-doc" target="_blank">protoc-gen-doc</a>的说明。</p>
-<p>对于 xUbuntu 14.04，请运行以下命令：</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">sudo</span> sh -c <span class="hljs-string">"echo 'deb http://download.opensuse.org/repositories/home:/estan:/protoc-gen-doc/xUbuntu_14.04/ /' &gt;&gt; /etc/apt/sources.list.d/protoc-gen-doc.list"</span>
-<span class="hljs-built_in">sudo</span> apt-get update
-<span class="hljs-built_in">sudo</span> apt-get install protoc-gen-doc
+                        <h1 id="calloptions">类CallOptions</h1>
+<p>类CallOptions是新的RPC调用的运行时选项的集合。</p>
+<h2 id="">类定义</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> io.grpc;
+<span class="hljs-annotation">@Immutable</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CallOptions</span> </span>{
+}
 </code></pre>
-<h3 id="windows">windows</h3>
-<p>protoc-gen-doc的github项目的 <a href="https://github.com/estan/protoc-gen-doc/releases" target="_blank">release page上</a> ，可以找到windows的版本的下载。</p>
-<h2 id="">执行</h2>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> dolphin-demo/contract
-protoc --doc_out=html,index.html:target/contract-doc src/main/proto/*.proto
+<p>注意@Immutable标签，这个CallOptions是不可变类。</p>
+<h2 id="">属性和构造函数</h2>
+<p>CallOptions的代码注释中有讲到：虽然CallOptions是不可变类，但是它的属性并没有声明为final。这样可以在构造函数之外赋值，否则就需要在构造函数中给出长长的一个参数列表。</p>
+<p>属性有下面5个，其中有几个声明为容许为null：</p>
+<pre><code class="lang-java">  <span class="hljs-keyword">private</span> Long deadlineNanoTime;
+  <span class="hljs-keyword">private</span> Executor executor;
+
+  <span class="hljs-annotation">@Nullable</span>
+  <span class="hljs-keyword">private</span> String authority;
+
+  <span class="hljs-annotation">@Nullable</span>
+  <span class="hljs-keyword">private</span> RequestKey requestKey;
+
+  <span class="hljs-annotation">@Nullable</span>
+  <span class="hljs-keyword">private</span> String compressorName;
 </code></pre>
-<p>可惜，报错：</p>
-<pre><code>src/main/proto/user.proto:1:10: Unrecognized syntax identifier &quot;proto3&quot;.  This parser only recognizes &quot;proto2&quot;.
-</code></pre><p>目前版本还不支持proto3！真是遗憾。</p>
-<h2 id="">后记</h2>
-<p>跑去看了一下，作者正在开发1.0版本，承诺会加入proto3的支持，只能期待这个版本早点发布了。</p>
-<ul>
-<li><a href="https://github.com/estan/protoc-gen-doc/issues/17" target="_blank">Add support for protobuf 3.0</a>: github上的issue记录</li>
-</ul>
+<p>构造函数比较有意思，第二个版本的构造函数实现了复制功能，相当于创建了一个和给定实例数据完全相同的另一个对象实例：</p>
+<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">CallOptions</span><span class="hljs-params">()</span> </span>{
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">CallOptions</span><span class="hljs-params">(CallOptions other)</span> </span>{
+    deadlineNanoTime = other.deadlineNanoTime;
+    authority = other.authority;
+    requestKey = other.requestKey;
+    executor = other.executor;
+    compressorName = other.compressorName;
+  }
+</code></pre>
+<p>为了不使用传统的不可变类的实现方式(属性声明为final，构造函数中一一赋值)，CallOptions中每次赋值都要使用上面的复制构造函数创建一个新的实例对象，然后返回新的实例对象(旧有实例就相当于抛弃了？):</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> CallOptions <span class="hljs-title">withDeadlineNanoTime</span><span class="hljs-params">(@Nullable Long deadlineNanoTime)</span> </span>{
+    CallOptions newOptions = <span class="hljs-keyword">new</span> CallOptions(<span class="hljs-keyword">this</span>);
+    newOptions.deadlineNanoTime = deadlineNanoTime;
+    <span class="hljs-keyword">return</span> newOptions;
+}
+</code></pre>
+<p>有个疑惑，按照上面的实现机制，如果CallOptions的使用者要创建一个有多次复制的CallOptions示例，就必须如下编码：</p>
+<pre><code class="lang-java">CallOptions callOptions = CallOptions.DEFAULT
+    .withDeadlineNanoTime(***)
+    .withAuthority(***)
+    .withCompression(***)
+    .withRequestKey(***)
+</code></pre>
+<p>这样实际会创建多次(取决于with()方法的调用次数)实例。不过从grpc的代码实现上看，每次只是在新建一个stub实例时才传入一个 CallOptions 实例，之后的每次调用都将重用这个 CallOptions 实例，所以实际上只是开始时创建多次实例，之后运行时就不再创建。</p>
+<h2 id="">属性的详细含义</h2>
+<h3 id="deadline--">deadline / 最后期限</h3>
+<p>withDeadlineNanoTime() 返回新的一个CallOptions，最后期限为在给定的绝对值。这个绝对值以纳秒为单位，和每次 System.nanoTime() 的时间一致：</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> CallOptions <span class="hljs-title">withDeadlineNanoTime</span><span class="hljs-params">(@Nullable Long deadlineNanoTime)</span> </span>{
+    CallOptions newOptions = <span class="hljs-keyword">new</span> CallOptions(<span class="hljs-keyword">this</span>);
+    newOptions.deadlineNanoTime = deadlineNanoTime;
+    <span class="hljs-keyword">return</span> newOptions;
+}
+</code></pre>
+<p>withDeadlineAfter()方法返回一个最后期限为在给定期限之后的新的CallOptions， 可以看到实现的方式就是取当前的 System.nanoTime() 然后添加给定的期限：</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> CallOptions <span class="hljs-title">withDeadlineAfter</span><span class="hljs-params">(<span class="hljs-keyword">long</span> duration, TimeUnit unit)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">withDeadlineNanoTime</span><span class="hljs-params">(System.nanoTime()</span> + unit.<span class="hljs-title">toNanos</span><span class="hljs-params">(duration)</span>)</span>;
+}
+</code></pre>
+<h3 id="executor">executor</h3>
+<p>设置新的executor，用来覆盖 ManagedChannelBuilder.executor 指定的默认 executor 。</p>
+<h3 id="requestkey">requestKey</h3>
+<p>用于基于亲和度(affinity-based)的路由的request key。</p>
+<h3 id="authority--">authority / 权限</h3>
+<p>覆盖 channel声明要连接到的 HTTP/2 的authority。<strong>这不是普遍安全的</strong>。覆盖容许高级用户为多个服务重用一个单一的channel，甚至这些服务在不同的域名上托管。这将假设服务器是虚拟托管了多个域名并被授权继续这样做。服务提供者极少作出这样的授权。此时，覆盖值没有安全认证，例如保证authority匹配服务器的TLS证书。</p>
+<h3 id="compressorname--">compressorName / 压缩器名称</h3>
+<p>设置为调用使用的压缩方式。压缩器必须是在 CompressorRegistry 已知的有效名称。</p>
 
                     
                     </section>
@@ -550,8 +596,10 @@ protoc --doc_out=html,index.html:target/contract-doc src/main/proto/*.proto
         </div>
 
         
-        <a href="../../action/springboot/springboot.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 集成Spring Boot"><i class="fa fa-angle-left"></i></a>
+        <a href="../../sourcecode/common/index.html" class="navigation navigation-prev " aria-label="Previous page: 通用代码"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../../action/index.html" class="navigation navigation-next " aria-label="Next page: 实战"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
