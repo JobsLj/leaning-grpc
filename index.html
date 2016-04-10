@@ -36,7 +36,7 @@
 
 
         
-    <div class="book" data-level="0" data-basepath="." data-revision="1460260011021">
+    <div class="book" data-level="0" data-basepath="." data-revision="1460260740109">
     
 
 <div class="book-summary">
@@ -175,7 +175,7 @@
                         
                             <b>3.</b>
                         
-                         Protocol Buffer
+                         Protocol Buffer 3
                     </a>
                 
             
@@ -395,11 +395,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_5">
+                    <section class="normal" id="section-gitbook_4">
                     
-                        <h1 id="grpc">Grpc学习笔记和资料翻译</h1>
+                        <h1 id="grpc">Grpc学习笔记</h1>
+<blockquote>
+<p>注: 如果你看到的是github的源代码, 请点击 <a href="http://skyao.github.io/leaning-grpc/" target="_blank">这里</a> 查看html内容.</p>
+</blockquote>
 <h1 id="">介绍</h1>
-<p>grpc是google最新发布(2015年2月底)的开源rpc框架, 声称是&quot;一个高性能，开源，将移动和HTTP/2放在首位的通用的RPC框架.&quot;. 技术栈非常的新, 基于HTTP/2, netty5.0, proto3, 拥有非常丰富而实用的特性, 堪称新一代RPC框架的典范.</p>
+<p>grpc是google最新发布(2015年2月底)的开源rpc框架, 声称是&quot;一个高性能，开源，将移动和HTTP/2放在首位的通用的RPC框架.&quot;. 技术栈非常的新, 基于HTTP/2, netty4.1, proto3, 拥有非常丰富而实用的特性, 堪称新一代RPC框架的典范.</p>
 <p>这里记录google grpc学习和使用过程的收集到的各种信息和心得, 另外针对性的翻译了部分特别有价值的英文资料(下面章节列表中有标注为&quot;翻译&quot;)。</p>
 <blockquote>
 <p>注: <strong>grpc目前已经进入beta阶段</strong>, 已经可以考虑在正式产品中使用. 当然，期待正式版尽快发布!</p>
@@ -407,30 +410,19 @@
 <h1 id="">章节内容</h1>
 <ul>
 <li><a href="introduction/index.html">gPRC 介绍</a><ul>
-<li><a href="introduction/information.html">gRPC 信息</a></li>
-</ul>
-</li>
-<li><a href="proto3/index.html">Protocol Buffer</a><ul>
-<li><a href="proto3/guide/index.html">开发指南(翻译)</a><ul>
-<li><a href="proto3/guide/overview.html">概述</a></li>
-<li><a href="proto3/guide/language_guide.html">语言指南</a></li>
-<li><a href="proto3/guide/style_guide.html">风格指南</a></li>
-<li><a href="proto3/guide/encoding.html">编码</a></li>
-<li><a href="proto3/guide/techniques.html">技巧</a></li>
-</ul>
-</li>
-<li><a href="proto3/reference/index.html">API参考文档</a><ul>
-<li><a href="proto3/reference/java/index.html">Java Generated Code(翻译)</a></li>
-</ul>
-</li>
+<li><a href="introduction/information.html">资料收集整理</a></li>
 </ul>
 </li>
 <li><a href="grpc/index.html">gPRC文档</a><ul>
-<li><a href="grpc/grpc.html">官网开发指南</a><ul>
-<li><a href="grpc/overview.html">概述(笔记)</a></li>
-<li><a href="grpc/grpc_concepts.html">gRPC概念(笔记)</a></li>
+<li><a href="grpc/official_docs.html">gRPC官方文档(中文版)</a></li>
+<li><a href="grpc/motivation.html">gRPC动机和设计原则</a></li>
 </ul>
 </li>
+<li><a href="proto3/index.html">Protocol Buffer 3</a></li>
+<li><a href="sourcecode/index.html">gRPC源码学习</a><ul>
+<li><a href="sourcecode/client/index.html">客户端代码</a></li>
+<li><a href="sourcecode/server/index.html">服务器端代码</a></li>
+<li><a href="sourcecode/common/index.html">通用代码</a></li>
 </ul>
 </li>
 <li><a href="action/index.html">实战</a><ul>
@@ -440,9 +432,6 @@
 </li>
 </ul>
 <p>内容陆续添加中......</p>
-<blockquote>
-<p>注: 如果你看到的是github的源代码, 请点击 <a href="http://skyao.github.io/leaning-grpc/" target="_blank">这里</a> 查看html内容.</p>
-</blockquote>
 
                     
                     </section>
