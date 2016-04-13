@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>服务器端代码 | Leaning gRPC</title>
+        <title>类ManagedChannelBuilder | Leaning gRPC</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -13,16 +13,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
         
         
     
     
-    <link rel="next" href="../../sourcecode/common/index.html" />
+    <link rel="next" href="../../../sourcecode/common/class_CallOptions.html" />
     
     
-    <link rel="prev" href="../../sourcecode/client/rpc/index.html" />
+    <link rel="prev" href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" />
     
 
         
@@ -30,11 +30,11 @@
     <body>
         
         
-<link rel="stylesheet" href="../../gitbook/style.css">
+<link rel="stylesheet" href="../../../gitbook/style.css">
 
 
         
-    <div class="book" data-level="4.2" data-basepath="../.." data-revision="1460571712431">
+    <div class="book" data-level="4.3.2.3" data-basepath="../../.." data-revision="1460571712431">
     
 
 <div class="book-summary">
@@ -62,7 +62,7 @@
         <li class="chapter " data-level="0" data-path="index.html">
             
                 
-                    <a href="../../index.html">
+                    <a href="../../../index.html">
                         <i class="fa fa-check"></i>
                         
                          Introduction
@@ -76,7 +76,7 @@
         <li class="chapter " data-level="1" data-path="introduction/index.html">
             
                 
-                    <a href="../../introduction/index.html">
+                    <a href="../../../introduction/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.</b>
@@ -93,7 +93,7 @@
         <li class="chapter " data-level="1.1" data-path="introduction/information.html">
             
                 
-                    <a href="../../introduction/information.html">
+                    <a href="../../../introduction/information.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.1.</b>
@@ -114,7 +114,7 @@
         <li class="chapter " data-level="2" data-path="grpc/index.html">
             
                 
-                    <a href="../../grpc/index.html">
+                    <a href="../../../grpc/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.</b>
@@ -131,7 +131,7 @@
         <li class="chapter " data-level="2.1" data-path="grpc/official_docs.html">
             
                 
-                    <a href="../../grpc/official_docs.html">
+                    <a href="../../../grpc/official_docs.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.1.</b>
@@ -147,7 +147,7 @@
         <li class="chapter " data-level="2.2" data-path="grpc/motivation.html">
             
                 
-                    <a href="../../grpc/motivation.html">
+                    <a href="../../../grpc/motivation.html">
                         <i class="fa fa-check"></i>
                         
                             <b>2.2.</b>
@@ -168,7 +168,7 @@
         <li class="chapter " data-level="3" data-path="proto3/index.html">
             
                 
-                    <a href="../../proto3/index.html">
+                    <a href="../../../proto3/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.</b>
@@ -184,7 +184,7 @@
         <li class="chapter " data-level="4" data-path="sourcecode/index.html">
             
                 
-                    <a href="../../sourcecode/index.html">
+                    <a href="../../../sourcecode/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.</b>
@@ -201,7 +201,7 @@
         <li class="chapter " data-level="4.1" data-path="sourcecode/client/index.html">
             
                 
-                    <a href="../../sourcecode/client/index.html">
+                    <a href="../../../sourcecode/client/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.</b>
@@ -218,7 +218,7 @@
         <li class="chapter " data-level="4.1.1" data-path="sourcecode/client/channel/index.html">
             
                 
-                    <a href="../../sourcecode/client/channel/index.html">
+                    <a href="../../../sourcecode/client/channel/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.1.</b>
@@ -234,7 +234,7 @@
         <li class="chapter " data-level="4.1.2" data-path="sourcecode/client/stub/index.html">
             
                 
-                    <a href="../../sourcecode/client/stub/index.html">
+                    <a href="../../../sourcecode/client/stub/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.2.</b>
@@ -251,7 +251,7 @@
         <li class="chapter " data-level="4.1.2.1" data-path="sourcecode/client/stub/class_DemoServiceBlockingStub.html">
             
                 
-                    <a href="../../sourcecode/client/stub/class_DemoServiceBlockingStub.html">
+                    <a href="../../../sourcecode/client/stub/class_DemoServiceBlockingStub.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.2.1.</b>
@@ -267,7 +267,7 @@
         <li class="chapter " data-level="4.1.2.2" data-path="sourcecode/client/stub/class_AbstractStub.html">
             
                 
-                    <a href="../../sourcecode/client/stub/class_AbstractStub.html">
+                    <a href="../../../sourcecode/client/stub/class_AbstractStub.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.2.2.</b>
@@ -288,7 +288,7 @@
         <li class="chapter " data-level="4.1.3" data-path="sourcecode/client/rpc/index.html">
             
                 
-                    <a href="../../sourcecode/client/rpc/index.html">
+                    <a href="../../../sourcecode/client/rpc/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.1.3.</b>
@@ -306,10 +306,10 @@
         </li>
     
         
-        <li class="chapter active" data-level="4.2" data-path="sourcecode/server/index.html">
+        <li class="chapter " data-level="4.2" data-path="sourcecode/server/index.html">
             
                 
-                    <a href="../../sourcecode/server/index.html">
+                    <a href="../../../sourcecode/server/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.2.</b>
@@ -325,7 +325,7 @@
         <li class="chapter " data-level="4.3" data-path="sourcecode/common/index.html">
             
                 
-                    <a href="../../sourcecode/common/index.html">
+                    <a href="../../../sourcecode/common/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.</b>
@@ -342,7 +342,7 @@
         <li class="chapter " data-level="4.3.1" data-path="sourcecode/common/channel/index.html">
             
                 
-                    <a href="../../sourcecode/common/channel/index.html">
+                    <a href="../../../sourcecode/common/channel/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.1.</b>
@@ -358,7 +358,7 @@
         <li class="chapter " data-level="4.3.2" data-path="sourcecode/common/channel_builder/index.html">
             
                 
-                    <a href="../../sourcecode/common/channel_builder/index.html">
+                    <a href="../../../sourcecode/common/channel_builder/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.</b>
@@ -375,7 +375,7 @@
         <li class="chapter " data-level="4.3.2.1" data-path="sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
             
                 
-                    <a href="../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.1.</b>
@@ -391,7 +391,7 @@
         <li class="chapter " data-level="4.3.2.2" data-path="sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html">
             
                 
-                    <a href="../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.2.</b>
@@ -404,10 +404,10 @@
         </li>
     
         
-        <li class="chapter " data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+        <li class="chapter active" data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
             
                 
-                    <a href="../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.3.</b>
@@ -428,7 +428,7 @@
         <li class="chapter " data-level="4.3.3" data-path="sourcecode/common/class_CallOptions.html">
             
                 
-                    <a href="../../sourcecode/common/class_CallOptions.html">
+                    <a href="../../../sourcecode/common/class_CallOptions.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.3.</b>
@@ -454,7 +454,7 @@
         <li class="chapter " data-level="5" data-path="action/index.html">
             
                 
-                    <a href="../../action/index.html">
+                    <a href="../../../action/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.</b>
@@ -471,7 +471,7 @@
         <li class="chapter " data-level="5.1" data-path="action/springboot/springboot.html">
             
                 
-                    <a href="../../action/springboot/springboot.html">
+                    <a href="../../../action/springboot/springboot.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.1.</b>
@@ -487,7 +487,7 @@
         <li class="chapter " data-level="5.2" data-path="action/documentation/index.html">
             
                 
-                    <a href="../../action/documentation/index.html">
+                    <a href="../../../action/documentation/index.html">
                         <i class="fa fa-check"></i>
                         
                             <b>5.2.</b>
@@ -585,7 +585,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../" >Leaning gRPC</a>
+        <a href="../../../" >Leaning gRPC</a>
     </h1>
 </div>
 
@@ -593,9 +593,126 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_25">
+                    <section class="normal" id="section-gitbook_18">
                     
-                        <h1 id="grpc">gRPC服务器端源码</h1>
+                        <h1 id="managedchannelbuilder">类ManagedChannelBuilder</h1>
+<p>用于创建 ManagedChannel 实例的 builder.</p>
+<h1 id="">类定义</h1>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> io.grpc;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ManagedChannelBuilder</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedChannelBuilder</span>&lt;<span class="hljs-title">T</span>&gt;&gt; </span>{
+}
+</code></pre>
+<p>T 是这个builder的具体类型。</p>
+<h1 id="">类方法</h1>
+<h2 id="">静态工厂方法</h2>
+<p>有两个静态方法用来实例。</p>
+<h3 id="foraddress">forAddress()</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ManagedChannelBuilder&lt;?&gt; forAddress(String name, <span class="hljs-keyword">int</span> port) {
+    <span class="hljs-keyword">return</span> ManagedChannelProvider.provider().builderForAddress(name, port);
+}
+</code></pre>
+<h3 id="fortarget">forTarget()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ManagedChannelBuilder&lt;?&gt; forTarget(String target) {
+    <span class="hljs-keyword">return</span> ManagedChannelProvider.provider().builderForTarget(target);
+}
+</code></pre>
+<p>用target字符串创建一个channel， 可以是一个有效的命名解析器兼容(NameResolver-compliant)的URI，或者是一个 authority(权威，权力?) 字符串。</p>
+<p>命名解析器兼容(NameResolver-compliant)URI 是被作为URI定义的抽象层次(absolute hierarchical)URI。实例的URI：</p>
+<ul>
+<li>&quot;dns:///foo.googleapis.com:8080&quot;</li>
+<li>&quot;dns:///foo.googleapis.com&quot;</li>
+<li>&quot;dns:///%5B2001:db8:85a3:8d3:1319:8a2e:370:7348%5D:443&quot;</li>
+<li>&quot;dns://8.8.8.8/foo.googleapis.com:8080&quot;</li>
+<li>&quot;dns://8.8.8.8/foo.googleapis.com&quot;</li>
+<li>&quot;zookeeper://zk.example.com:9900/example_service&quot;</li>
+</ul>
+<p>authority(权威) 字符串将被转换为一个命名解析器兼容的URI， 使用&quot;dns&quot;作为scheme，没有authority，而且用合适转义之后的原始authority字符串作为它的path：</p>
+<ul>
+<li>&quot;localhost&quot;</li>
+<li>&quot;127.0.0.1&quot;</li>
+<li>&quot;localhost:8080&quot;</li>
+<li>&quot;foo.googleapis.com:8080&quot;</li>
+<li>&quot;127.0.0.1:8080&quot;</li>
+<li>&quot;[2001:db8:85a3:8d3:1319:8a2e:370:7348]&quot;</li>
+<li>&quot;[2001:db8:85a3:8d3:1319:8a2e:370:7348]:443&quot;</li>
+</ul>
+<blockquote>
+<p>注: 以上内容来自javadoc上该方法的注释说明。</p>
+</blockquote>
+<h2 id="">实例方法</h2>
+<h3 id="directexecutor">directExecutor()</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">directExecutor</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<p>直接在传输的线程中执行应用代码。</p>
+<p>取决于底层传输，使用一个 direct executor 可能引发重大的性能提升。当然，它也要求应用在任何情况下不阻塞。</p>
+<p>调用这个方法在语义上等同于调用 executor(Executor) 并传递一个 direct executor。但是，这个方式更合适因为它可以容许传输层执行特别的优化。</p>
+<blockquote>
+<p>注： 考虑实际测试一下，看是否真的可以得到重大的性能提升。</p>
+</blockquote>
+<h3 id="executor">executor()</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">executor</span><span class="hljs-params">(Executor executor)</span></span>;
+</code></pre>
+<p>提供一个自定义executor。</p>
+<p>这是一个可选参数。如果在channel构建时没有提供executor，builder将使用一个静态缓存的线程池。</p>
+<p>channel不会承担给定 executor 的所有者职责。当需要时，关闭 executor 是调用者的责任。</p>
+<blockquote>
+<p>注： 这意味着我们作为调用者需要自己管理好 executor。</p>
+</blockquote>
+<h3 id="intercept">intercept()</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">intercept</span><span class="hljs-params">(List&lt;ClientInterceptor&gt; interceptors)</span></span>;
+</code></pre>
+<p>添加拦截器，被channel执行它的实际工作前被调用。功能上等同于使用 ClientInterceptors.intercept(Channel, List)， 但是依然可以访问原始的ManagedChannel。</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">intercept</span><span class="hljs-params">(ClientInterceptor... interceptors)</span></span>;
+</code></pre>
+<p>添加拦截器，被channel执行它的实际工作前被调用。功能上等同于使用 ClientInterceptors.intercept(Channel, ClientInterceptor...)， 但是依然可以访问原始的ManagedChannel。</p>
+<h3 id="useragent">userAgent()</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">userAgent</span><span class="hljs-params">(String userAgent)</span></span>;
+</code></pre>
+<p>为应用提供一个定制的 User-Agent 。</p>
+<p>这是一个可选参数。如果提供，给定的agent将使用grpc User-Agent作为前缀.</p>
+<blockquote>
+<p>注： 原文 the given agent will be prepended by the grpc User-Agent. 硬是没有看懂到底哪个作为前缀？ 等后面查代码。</p>
+</blockquote>
+<h3 id="overrideauthority">overrideAuthority()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>(value=<span class="hljs-string">"primarily for testing"</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">overrideAuthority</span><span class="hljs-params">(String authority)</span></span>
+</code></pre>
+<p>覆盖和TLS和HTTP 虚拟主机服务一起使用的authority。它不会改变实际连接到的主机。通常是以host:port的形式。</p>
+<p>应该仅用于测试。</p>
+<h3 id="useplaintext">usePlaintext()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>(<span class="hljs-string">"primarily for testing"</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">usePlaintext</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> skipNegotiation)</span></span>;
+</code></pre>
+<p>使用 plaintext 连接到服务器。默认将使用加密连接机制如 TLS 。</p>
+<p>应该仅用于测试或者用于那些API使用或者数据交换并不敏感的API。</p>
+<p>参数 skipNegotiation true，如果预先知道终端支持plaintext; false 如果 plaintext 的使用必须协商。</p>
+<h3 id="nameresolverfactory">nameResolverFactory()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">nameResolverFactory</span><span class="hljs-params">(NameResolver.Factory resolverFactory)</span></span>;
+</code></pre>
+<p>为channel提供一个定制的 NameResolver.Factory。如果这个方法没有被调用，builder将在全局解析器注册(global resolver registry)中为提供的目标寻找一个工厂。</p>
+<h3 id="loadbalancerfactory">loadBalancerFactory()</h3>
+<pre><code class="lang-java">  <span class="hljs-annotation">@ExperimentalApi</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">loadBalancerFactory</span><span class="hljs-params">(LoadBalancer.Factory loadBalancerFactory)</span></span>;
+</code></pre>
+<p>为channel提供一个定制的 LoadBalancer.Factory 。</p>
+<p>如果这个方法没有被调用，builder将为这个 channel 使用 SimpleLoadBalancerFactory 。</p>
+<h3 id="loadbalancerfactory">loadBalancerFactory()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">decompressorRegistry</span><span class="hljs-params">(DecompressorRegistry registry)</span></span>;
+</code></pre>
+<p>设置用于在channen中使用的解压缩注册器。这是一个高级API调用，不应该被使用，除非你正在使用定制化的消息编码。默认支持的解压缩在 DecompressorRegistry.getDefaultInstance 中。</p>
+<h3 id="compressorregistry">compressorRegistry()</h3>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">compressorRegistry</span><span class="hljs-params">(CompressorRegistry registry)</span></span>;
+</code></pre>
+<p>设置用于在channen中使用的压缩注册器。这是一个高级API调用，不应该被使用，除非你正在使用定制化的消息编码。默认支持的解压缩在 DecompressorRegistry.getDefaultInstance 中。</p>
+<h3 id="build">build()</h3>
+<p>使用给定参数来构建一个channel</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> ManagedChannel <span class="hljs-title">build</span><span class="hljs-params">()</span></span>;
+</code></pre>
 
                     
                     </section>
@@ -606,23 +723,23 @@
         </div>
 
         
-        <a href="../../sourcecode/client/rpc/index.html" class="navigation navigation-prev " aria-label="Previous page: 执行RPC调用"><i class="fa fa-angle-left"></i></a>
+        <a href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" class="navigation navigation-prev " aria-label="Previous page: 类AbstractManagedChannelImplBuilder"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../sourcecode/common/index.html" class="navigation navigation-next " aria-label="Next page: 通用代码"><i class="fa fa-angle-right"></i></a>
+        <a href="../../../sourcecode/common/class_CallOptions.html" class="navigation navigation-next " aria-label="Next page: 类CallOptions"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
-<script src="../../gitbook/app.js"></script>
+<script src="../../../gitbook/app.js"></script>
 
     
     <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
     
-    <script src="../../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    <script src="../../../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
     
 
 <script>
