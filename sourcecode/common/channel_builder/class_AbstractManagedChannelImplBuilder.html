@@ -19,10 +19,10 @@
         
     
     
-    <link rel="next" href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html" />
+    <link rel="next" href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html" />
     
     
-    <link rel="prev" href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html" />
+    <link rel="prev" href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-level="4.3.2.2" data-basepath="../../.." data-revision="1460572209433">
+    <div class="book" data-level="4.3.2.2" data-basepath="../../.." data-revision="1463469215555">
     
 
 <div class="book-summary">
@@ -153,6 +153,22 @@
                             <b>2.2.</b>
                         
                          gRPC动机和设计原则
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="grpc/source_navigating.html">
+            
+                
+                    <a href="../../../grpc/source_navigating.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         源码导航
                     </a>
                 
             
@@ -319,6 +335,28 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.2.1" data-path="sourcecode/server/class_Status.html">
+            
+                
+                    <a href="../../../sourcecode/server/class_Status.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                         类Status
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         
@@ -372,15 +410,15 @@
                 
     
         
-        <li class="chapter " data-level="4.3.2.1" data-path="sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
+        <li class="chapter " data-level="4.3.2.1" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
             
                 
-                    <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.1.</b>
                         
-                         类NettyChannelBuilder
+                         类ManagedChannelBuilder
                     </a>
                 
             
@@ -404,15 +442,15 @@
         </li>
     
         
-        <li class="chapter " data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+        <li class="chapter " data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
             
                 
-                    <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.3.</b>
                         
-                         类ManagedChannelBuilder
+                         类NettyChannelBuilder
                     </a>
                 
             
@@ -593,7 +631,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_18">
+                    <section class="normal" id="section-gitbook_19">
                     
                         <h1 id="abstractmanagedchannelimplbuilder">类AbstractManagedChannelImplBuilder</h1>
 <p>类AbstractManagedChannelImplBuilder 是 channel builder的基类。</p>
@@ -697,19 +735,12 @@
 <span class="hljs-function"><span class="hljs-keyword">public</span> ManagedChannelImpl <span class="hljs-title">build</span><span class="hljs-params">()</span> </span>{
 ClientTransportFactory transportFactory = <span class="hljs-keyword">new</span> AuthorityOverridingTransportFactory(
     buildTransportFactory(), authorityOverride);
-    ......
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">ManagedChannelImpl</span><span class="hljs-params">(
+        ......,transportFactory,......)</span></span>;
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> ManagedChannelImpl <span class="hljs-title">build</span><span class="hljs-params">()</span> </span>{
-ClientTransportFactory transportFactory = <span class="hljs-keyword">new</span> AuthorityOverridingTransportFactory(
-    buildTransportFactory(), authorityOverride);
-    ......
-}
-</code></pre>
-<pre><code class="lang-java">AuthorityOverridingTransportFactory是一个内部类，以装饰模式包裹了一个ClientTransportFactory的实例，将请求都代理给这个包装的ClientTransportFactory实例，
-
-<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthorityOverridingTransportFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ClientTransportFactory</span> </span>{
+<p>正常情况，通过buildTransportFactory()方法得到ClientTransportFactory，然后传递给ManagedChannelImpl的构造函数。但是为了覆盖原来的Authority，实现了一个AuthorityOverridingTransportFactory内部类，以装饰模式包裹了一个ClientTransportFactory的实例，然后将请求都代理给这个包装的ClientTransportFactory实例：</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthorityOverridingTransportFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ClientTransportFactory</span> </span>{
     <span class="hljs-keyword">final</span> ClientTransportFactory factory;
     <span class="hljs-annotation">@Nullable</span> <span class="hljs-keyword">final</span> String authorityOverride;
 
@@ -729,10 +760,90 @@ ClientTransportFactory transportFactory = <span class="hljs-keyword">new</span> 
     }
     ......
 </code></pre>
+<p>在newClientTransport()方法中， 前面传递进来的authorityOverride 派上用场了。</p>
 <blockquote>
 <p>注： 感觉应该在构建AuthorityOverridingTransportFactory之前做authorityOverride的null检查，如果是null就没有必要构建AuthorityOverridingTransportFactory，直接用buildTransportFactory()返回的就可以了。</p>
 <p>提交了一个pull request 给grpc项目，看看他们的意见如何： <a href="https://github.com/grpc/grpc-java/pull/1666" target="_blank">https://github.com/grpc/grpc-java/pull/1666</a></p>
 </blockquote>
+<h2 id="nameresolverfactory">nameResolverFactory</h2>
+<pre><code class="lang-java"><span class="hljs-annotation">@Nullable</span>
+<span class="hljs-keyword">private</span> NameResolver.Factory nameResolverFactory;
+
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">AbstractManagedChannelImplBuilder</span><span class="hljs-params">(SocketAddress directServerAddress, String authority)</span> </span>{
+    ......
+    <span class="hljs-keyword">this</span>.nameResolverFactory = <span class="hljs-keyword">new</span> DirectAddressNameResolverFactory(directServerAddress, authority);
+}
+
+<span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> T <span class="hljs-title">nameResolverFactory</span><span class="hljs-params">(NameResolver.Factory resolverFactory)</span> </span>{
+    Preconditions.checkState(directServerAddress == <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">"directServerAddress is set (%s), which forbids the use of NameResolverFactory"</span>,
+        directServerAddress);
+    <span class="hljs-keyword">this</span>.nameResolverFactory = resolverFactory;
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">thisT</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p>如前所述，如果设置了directServerAddress，则nameResolverFactory自动设置为 DirectAddressNameResolverFactory 。而且不能再设置 nameResolverFactory 。</p>
+<p>nameResolverFactory在build()方法中使用，firstNonNull()表明如果 nameResolverFactory 有设置则使用 nameResolverFactory， 否则使用默认的 NameResolverRegistry.getDefaultRegistry()：</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> ManagedChannelImpl <span class="hljs-title">build</span><span class="hljs-params">()</span> </span>{
+ClientTransportFactory transportFactory = buildTransportFactory();
+    <span class="hljs-keyword">if</span> (authorityOverride != <span class="hljs-keyword">null</span>) {
+      transportFactory = <span class="hljs-keyword">new</span> AuthorityOverridingTransportFactory(
+        transportFactory, authorityOverride);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">ManagedChannelImpl</span><span class="hljs-params">(
+        ......,
+        firstNonNull(nameResolverFactory, NameResolverRegistry.getDefaultRegistry()</span>)，
+        <span class="hljs-title">getNameResolverParams</span><span class="hljs-params">()</span>，
+        ......)</span>;
+}
+</code></pre>
+<p>额外的getNameResolverParams()用来给子类使用(以override的方式)，可以传递更多参数给 NameResolver.Factory.newNameResolver() 方法。默认实现只是返回一个Attributes.EMPTY</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> Attributes <span class="hljs-title">getNameResolverParams</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> Attributes.EMPTY;
+}
+</code></pre>
+<h2 id="loadbalancerfactory">loadBalancerFactory</h2>
+<pre><code class="lang-java"><span class="hljs-annotation">@Nullable</span>
+<span class="hljs-keyword">private</span> LoadBalancer.Factory loadBalancerFactory;
+
+<span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> T <span class="hljs-title">loadBalancerFactory</span><span class="hljs-params">(LoadBalancer.Factory loadBalancerFactory)</span> </span>{
+    Preconditions.checkState(directServerAddress == <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">"directServerAddress is set (%s), which forbids the use of LoadBalancerFactory"</span>,
+        directServerAddress);
+    <span class="hljs-keyword">this</span>.loadBalancerFactory = loadBalancerFactory;
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">thisT</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> ManagedChannelImpl <span class="hljs-title">build</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">ManagedChannelImpl</span><span class="hljs-params">(
+        ......,
+        firstNonNull(loadBalancerFactory, SimpleLoadBalancerFactory.getInstance()</span>),
+        ......)</span>;
+}
+</code></pre>
+<p>和 nameResolverFactory 的使用非常类似，同样是 directServerAddress 设置后不能再用，使用的方式也是在build()中检查是否有设置，如果没有设置则默认使用 SimpleLoadBalancerFactory 。</p>
+<h2 id="decompressorregistry--compressorregistry">decompressorRegistry 和 compressorRegistry</h2>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ManagedChannelImpl <span class="hljs-title">build</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">ManagedChannelImpl</span><span class="hljs-params">(
+        ......,
+        firstNonNull(decompressorRegistry, DecompressorRegistry.getDefaultInstance()</span>),
+        <span class="hljs-title">firstNonNull</span><span class="hljs-params">(compressorRegistry, CompressorRegistry.getDefaultInstance()</span>),
+        ......)</span>;
+}
+</code></pre>
+<p>decompressorRegistry 和 compressorRegistry 基本就是个简单设置+ 在build()方法中传递给ManagedChannelImpl()，如果没有设置则用默认值。</p>
+<blockquote>
+<p>注：顿悟！！！发现用firstNonNull()而不是 if (decompressorRegistry != null) 的好处，就是，做单元测试时容易得到高覆盖率！用if语句的话需要两个测试案例来分别覆盖有设值和没有设值两种情况，而firstNonNull()只要测试有设值就好了。这算不算是歪解？</p>
+</blockquote>
+<h1 id="">关键方法</h1>
+<h2 id="-buildtransportfactory">抽象方法 buildTransportFactory()</h2>
+<p>定义抽象方法 buildTransportFactory()， 用于子类实现这个方法来为这个channel提供 ClientTransportFactory 。</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> ClientTransportFactory <span class="hljs-title">buildTransportFactory</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<p>返回的 ClientTransportFactory 将在 build() 方法中传递给 ManagedChannelImpl() 的构造函数。</p>
 
                     
                     </section>
@@ -743,10 +854,10 @@ ClientTransportFactory transportFactory = <span class="hljs-keyword">new</span> 
         </div>
 
         
-        <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html" class="navigation navigation-prev " aria-label="Previous page: 类NettyChannelBuilder"><i class="fa fa-angle-left"></i></a>
+        <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html" class="navigation navigation-prev " aria-label="Previous page: 类ManagedChannelBuilder"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html" class="navigation navigation-next " aria-label="Next page: 类ManagedChannelBuilder"><i class="fa fa-angle-right"></i></a>
+        <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html" class="navigation navigation-next " aria-label="Next page: 类NettyChannelBuilder"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

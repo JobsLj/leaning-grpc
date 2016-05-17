@@ -19,10 +19,10 @@
         
     
     
-    <link rel="next" href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" />
+    <link rel="next" href="../../../sourcecode/common/class_CallOptions.html" />
     
     
-    <link rel="prev" href="../../../sourcecode/common/channel_builder/index.html" />
+    <link rel="prev" href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-level="4.3.2.1" data-basepath="../../.." data-revision="1460572209433">
+    <div class="book" data-level="4.3.2.3" data-basepath="../../.." data-revision="1463469215555">
     
 
 <div class="book-summary">
@@ -153,6 +153,22 @@
                             <b>2.2.</b>
                         
                          gRPC动机和设计原则
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="grpc/source_navigating.html">
+            
+                
+                    <a href="../../../grpc/source_navigating.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         源码导航
                     </a>
                 
             
@@ -319,6 +335,28 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.2.1" data-path="sourcecode/server/class_Status.html">
+            
+                
+                    <a href="../../../sourcecode/server/class_Status.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                         类Status
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         
@@ -372,15 +410,15 @@
                 
     
         
-        <li class="chapter active" data-level="4.3.2.1" data-path="sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
+        <li class="chapter " data-level="4.3.2.1" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
             
                 
-                    <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.1.</b>
                         
-                         类NettyChannelBuilder
+                         类ManagedChannelBuilder
                     </a>
                 
             
@@ -404,15 +442,15 @@
         </li>
     
         
-        <li class="chapter " data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+        <li class="chapter active" data-level="4.3.2.3" data-path="sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
             
                 
-                    <a href="../../../sourcecode/common/channel_builder/class_ManagedChannelBuilder.html">
+                    <a href="../../../sourcecode/common/channel_builder/class_NettyChannelBuilder.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.3.2.3.</b>
                         
-                         类ManagedChannelBuilder
+                         类NettyChannelBuilder
                     </a>
                 
             
@@ -593,9 +631,133 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_20">
+                    <section class="normal" id="section-gitbook_21">
                     
                         <h1 id="nettychannelbuilder">类NettyChannelBuilder</h1>
+<p>在构建使用netty传输的channel的过程中，用来帮助简化builder。</p>
+<h1 id="">类定义</h1>
+<pre><code class="lang-java"><span class="hljs-annotation">@ExperimentalApi</span>(<span class="hljs-string">"There is no plan to make this API stable, given transport API instability"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NettyChannelBuilder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractManagedChannelImplBuilder</span>&lt;<span class="hljs-title">NettyChannelBuilder</span>&gt; </span>{}
+</code></pre>
+<blockquote>
+<p>注: 居然还是 @ExperimentalApi， 唉......</p>
+</blockquote>
+<h2 id="">方法实现</h2>
+<h3 id="buildtransportfactory">最重要的buildTransportFactory()</h3>
+<pre><code class="lang-java">  <span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> ClientTransportFactory <span class="hljs-title">buildTransportFactory</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">NettyTransportFactory</span><span class="hljs-params">(channelType, negotiationType, protocolNegotiator, sslContext, eventLoopGroup, flowControlWindow, maxMessageSize, maxHeaderListSize)</span></span>;
+}
+</code></pre>
+<p>new了一个NettyTransportFactory实例，然后给了一堆参数。</p>
+<p>下面看看各个参数的含义和传递/使用方式。</p>
+<h3 id="channeltype">channelType</h3>
+<p>使用的channel type，默认使用NioSocketChannel。貌似一般也都是用这个了。</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> Class&lt;? extends Channel&gt; channelType = NioSocketChannel.class;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> NettyChannelBuilder <span class="hljs-title">channelType</span><span class="hljs-params">(Class&lt;? extends Channel&gt; channelType)</span> </span>{
+    <span class="hljs-keyword">this</span>.channelType = Preconditions.checkNotNull(channelType);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<h3 id="negotiationtype">negotiationType</h3>
+<p>协商类型，具体看 <code>io.grpc.netty.NegotiationType</code> 这个枚举的说明。</p>
+<p>NegotiationType 用于定义启动HTTP/2的协商方式：</p>
+<ul>
+<li>TLS： 使用 <code>TLS ALPN/NPN</code> 协商，假定是 SSL 连接</li>
+<li>PLAINTEXT_UPGRADE： 为 plaintext(非SSL)从 HTTP/1.1 升级到 HTTP/2 使用 HTTP 升级协议</li>
+<li>PLAINTEXT: 假设连接是 plaintext(非SSL) 而且远程端点直接支持HTTP2.而不需要升级</li>
+</ul>
+<p>从实现代码上看，默认是TLS，然后可以通过方法设置：</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> NegotiationType negotiationType = NegotiationType.TLS;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> NettyChannelBuilder <span class="hljs-title">negotiationType</span><span class="hljs-params">(NegotiationType type)</span> </span>{
+negotiationType = type;
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<p>此外还有一个usePlaintext()方法，指明使用 Plaintext， 然后通过参数 skipNegotiation 来指定是否需要跳过协商过程。这个方法等同于调用negotiationType(PLAINTEXT)或negotiationType(PLAINTEXT_UPGRADE),取决于参数取值：</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> NettyChannelBuilder <span class="hljs-title">usePlaintext</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> skipNegotiation)</span> </span>{
+    <span class="hljs-keyword">if</span> (skipNegotiation) {
+      negotiationType(NegotiationType.PLAINTEXT);
+    } <span class="hljs-keyword">else</span> {
+      negotiationType(NegotiationType.PLAINTEXT_UPGRADE);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<p>从代码上看，只是一个简单的if判断，这个方法可以认为是 negotiationType()方法的一个可读性稍好的版本，存在的价值只是为了方便和易读。</p>
+<h3 id="protocolnegotiator">protocolNegotiator</h3>
+<p>设置使用的protocolNegotiator，如果不是null，则覆盖negotiationType(NegotiationType) 或者 usePlaintext(boolean):</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> ProtocolNegotiator protocolNegotiator;
+
+<span class="hljs-annotation">@Internal</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> NettyChannelBuilder <span class="hljs-title">protocolNegotiator</span><span class="hljs-params">(
+      @Nullable ProtocolNegotiator protocolNegotiator)</span> </span>{
+    <span class="hljs-keyword">this</span>.protocolNegotiator = protocolNegotiator;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<p>所谓覆盖，是这样实现的，在newClientTransport()方法中，先判断 protocolNegotiator：</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ManagedClientTransport <span class="hljs-title">newClientTransport</span><span class="hljs-params">(
+    SocketAddress serverAddress, String authority)</span> </span>{
+    ......
+    ProtocolNegotiator negotiator = protocolNegotiator != <span class="hljs-keyword">null</span> ? protocolNegotiator :
+      createProtocolNegotiator(authority, negotiationType, sslContext);
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">newClientTransport</span><span class="hljs-params">(serverAddress, authority, negotiator)</span></span>;
+}
+</code></pre>
+<p>只有 protocolNegotiator 为null时，才会通过使用 authority / negotiationType / sslContext 参数来创建ProtocolNegotiator。如果不为null，则直接使用，无视上述几个参数。</p>
+<h3 id="sslcontext">sslContext</h3>
+<p>可以设置 SL/TLS 上下文来使用，替代系统默认。必须已经用 GrpcSslContexts 配置过，但是选项可以被覆盖。</p>
+<p>这个参数只是简单赋值，在上面的newClientTransport()方法中使用，注意同样的，如果protocolNegotiator被设置(不为null)，则这个sslContext将被忽略。</p>
+<h3 id="eventloopgroup">eventLoopGroup</h3>
+<p>可以提供一个 EventGroupLoop 给netty传输使用。</p>
+<p>这是一个可选参数。在channel构建时如果用户没有提供 EventGroupLoop ，builder将使用默认，而这个默认是静态的。注意 channel 不会为给定的 EventGroupLoop 负责，在需要时调用者有责任关闭它。</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Nullable</span>
+<span class="hljs-keyword">private</span> EventLoopGroup eventLoopGroup;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> NettyChannelBuilder <span class="hljs-title">eventLoopGroup</span><span class="hljs-params">(@Nullable EventLoopGroup eventLoopGroup)</span> </span>{
+    <span class="hljs-keyword">this</span>.eventLoopGroup = eventLoopGroup;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+</code></pre>
+<p>所谓使用静态的默认，代码实现是这样的：</p>
+<pre><code class="lang-java">usingSharedGroup = group == <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">if</span> (usingSharedGroup) {
+    <span class="hljs-comment">// The group was unspecified, using the shared group.</span>
+    <span class="hljs-keyword">this</span>.group = SharedResourceHolder.get(Utils.DEFAULT_WORKER_EVENT_LOOP_GROUP);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">this</span>.group = group;
+}
+</code></pre>
+<p>如果没有设置，则取 SharedResourceHolder.get(Utils.DEFAULT_WORKER_EVENT_LOOP_GROUP)， 而DEFAULT_WORKER_EVENT_LOOP_GROUP 是这样定义的：</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Utils</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Resource&lt;EventLoopGroup&gt; DEFAULT_BOSS_EVENT_LOOP_GROUP =
+      <span class="hljs-keyword">new</span> DefaultEventLoopGroupResource(<span class="hljs-number">1</span>, <span class="hljs-string">"grpc-default-boss-ELG"</span>);
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Resource&lt;EventLoopGroup&gt; DEFAULT_WORKER_EVENT_LOOP_GROUP =
+      <span class="hljs-keyword">new</span> DefaultEventLoopGroupResource(<span class="hljs-number">0</span>, <span class="hljs-string">"grpc-default-worker-ELG"</span>);
+</code></pre>
+<p>构造函数中 worker的 numEventLoops 参数设置为0, 而另一个 boss 的 numEventLoops 参数设置为1。这会影响两个EventLoopGroup(可以理解为netty的线程池)的线程数，具体代码如下：</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> EventLoopGroup <span class="hljs-title">create</span><span class="hljs-params">()</span> </span>{
+    ......
+    <span class="hljs-keyword">int</span> parallelism = numEventLoops == <span class="hljs-number">0</span>
+      ? Runtime.getRuntime().availableProcessors() * <span class="hljs-number">2</span> : numEventLoops;
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title">NioEventLoopGroup</span><span class="hljs-params">(parallelism, threadFactory)</span></span>;
+}
+</code></pre>
+<p>可以看到默认的 DEFAULT_WORKER_EVENT_LOOP_GROUP 的线程数为当前系统cpu数量的两倍。</p>
+<blockquote>
+<p>注： 这个 SharedResourceHolder 的实现挺有意思，可以拿来在需要时参考一下，甚至直接搬过来用。</p>
+</blockquote>
+<h3 id="flowcontrolwindow--maxmessagesize--maxheaderlistsize">flowControlWindow / maxMessageSize / maxHeaderListSize</h3>
+<p>这三个参数只是简单赋值和传递，然后给出了缺省的默认值：</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> flowControlWindow = DEFAULT_FLOW_CONTROL_WINDOW;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> maxMessageSize = DEFAULT_MAX_MESSAGE_SIZE;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> maxHeaderListSize = GrpcUtil.DEFAULT_MAX_HEADER_LIST_SIZE;
+</code></pre>
 
                     
                     </section>
@@ -606,10 +768,10 @@
         </div>
 
         
-        <a href="../../../sourcecode/common/channel_builder/index.html" class="navigation navigation-prev " aria-label="Previous page: ChannelBuilder"><i class="fa fa-angle-left"></i></a>
+        <a href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" class="navigation navigation-prev " aria-label="Previous page: 类AbstractManagedChannelImplBuilder"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../../sourcecode/common/channel_builder/class_AbstractManagedChannelImplBuilder.html" class="navigation navigation-next " aria-label="Next page: 类AbstractManagedChannelImplBuilder"><i class="fa fa-angle-right"></i></a>
+        <a href="../../../sourcecode/common/class_CallOptions.html" class="navigation navigation-next " aria-label="Next page: 类CallOptions"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
