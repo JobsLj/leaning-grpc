@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Channel Builder | Leaning gRPC</title>
+        <title>Channel Builder设计与代码实现 | Leaning gRPC</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.5.0">
@@ -22,7 +22,7 @@
     <link rel="next" href="../../channel/channel_builder/class_ManagedChannelBuilder.html" />
     
     
-    <link rel="prev" href="../../channel/class_ManagedChannel.html" />
+    <link rel="prev" href="../../channel/channel/class_ManagedChannel.html" />
     
 
         
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-level="3.2" data-basepath="../.." data-revision="1463909435237">
+    <div class="book" data-level="3.2" data-basepath="../.." data-revision="1463910624419">
     
 
 <div class="book-summary">
@@ -214,19 +214,27 @@
                 
     
         
-        <li class="chapter " data-level="3.1" >
+        <li class="chapter " data-level="3.1" data-path="channel/channel/index.html">
             
-            <span><b>3.1.</b> Channel</span>
+                
+                    <a href="../../channel/channel/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         Channel设计与代码实现
+                    </a>
+                
             
             
             <ul class="articles">
                 
     
         
-        <li class="chapter " data-level="3.1.1" data-path="channel/class_Channel.html">
+        <li class="chapter " data-level="3.1.1" data-path="channel/channel/class_Channel.html">
             
                 
-                    <a href="../../channel/class_Channel.html">
+                    <a href="../../channel/channel/class_Channel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.1.</b>
@@ -239,10 +247,10 @@
         </li>
     
         
-        <li class="chapter " data-level="3.1.2" data-path="channel/class_ManagedChannel.html">
+        <li class="chapter " data-level="3.1.2" data-path="channel/channel/class_ManagedChannel.html">
             
                 
-                    <a href="../../channel/class_ManagedChannel.html">
+                    <a href="../../channel/channel/class_ManagedChannel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.2.</b>
@@ -268,7 +276,7 @@
                         
                             <b>3.2.</b>
                         
-                         Channel Builder
+                         Channel Builder设计与代码实现
                     </a>
                 
             
@@ -330,13 +338,67 @@
         </li>
     
         
-        <li class="chapter " data-level="3.3" data-path="channel/class_CallOptions.html">
+        <li class="chapter " data-level="3.3" data-path="channel/channel_provider/index.html">
+            
+                
+                    <a href="../../channel/channel_provider/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                         Channel Provider设计与代码实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.3.1" data-path="channel/channel_provider/class_ManagedChannelProvider.html">
+            
+                
+                    <a href="../../channel/channel_provider/class_ManagedChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                         类ManagedChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.2" data-path="channel/channel_provider/class_NettyChannelProvider.html">
+            
+                
+                    <a href="../../channel/channel_provider/class_NettyChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                         类NettyChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.4" data-path="channel/class_CallOptions.html">
             
                 
                     <a href="../../channel/class_CallOptions.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.3.</b>
+                            <b>3.4.</b>
                         
                          类CallOptions
                     </a>
@@ -677,9 +739,9 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_11">
+                    <section class="normal" id="section-gitbook_14">
                     
-                        <h1 id="channel-builder">Channel Builder</h1>
+                        <h1 id="channel-builder">Channel Builder设计与代码实现</h1>
 <p>Channel Builder 的继承结构如下：</p>
 <p><img src="images/builders.png" alt=""></p>
 
@@ -692,7 +754,7 @@
         </div>
 
         
-        <a href="../../channel/class_ManagedChannel.html" class="navigation navigation-prev " aria-label="Previous page: 类ManagedChannel"><i class="fa fa-angle-left"></i></a>
+        <a href="../../channel/channel/class_ManagedChannel.html" class="navigation navigation-prev " aria-label="Previous page: 类ManagedChannel"><i class="fa fa-angle-left"></i></a>
         
         
         <a href="../../channel/channel_builder/class_ManagedChannelBuilder.html" class="navigation navigation-next " aria-label="Next page: 类ManagedChannelBuilder"><i class="fa fa-angle-right"></i></a>

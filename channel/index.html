@@ -19,6 +19,8 @@
         
     
     
+    <link rel="next" href="../channel/channel/index.html" />
+    
     
     <link rel="prev" href="../grpc/source_navigating.html" />
     
@@ -32,7 +34,7 @@
 
 
         
-    <div class="book" data-level="3" data-basepath=".." data-revision="1463909435237">
+    <div class="book" data-level="3" data-basepath=".." data-revision="1463910624419">
     
 
 <div class="book-summary">
@@ -212,19 +214,27 @@
                 
     
         
-        <li class="chapter " data-level="3.1" >
+        <li class="chapter " data-level="3.1" data-path="channel/channel/index.html">
             
-            <span><b>3.1.</b> Channel</span>
+                
+                    <a href="../channel/channel/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         Channel设计与代码实现
+                    </a>
+                
             
             
             <ul class="articles">
                 
     
         
-        <li class="chapter " data-level="3.1.1" data-path="channel/class_Channel.html">
+        <li class="chapter " data-level="3.1.1" data-path="channel/channel/class_Channel.html">
             
                 
-                    <a href="../channel/class_Channel.html">
+                    <a href="../channel/channel/class_Channel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.1.</b>
@@ -237,10 +247,10 @@
         </li>
     
         
-        <li class="chapter " data-level="3.1.2" data-path="channel/class_ManagedChannel.html">
+        <li class="chapter " data-level="3.1.2" data-path="channel/channel/class_ManagedChannel.html">
             
                 
-                    <a href="../channel/class_ManagedChannel.html">
+                    <a href="../channel/channel/class_ManagedChannel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.2.</b>
@@ -266,7 +276,7 @@
                         
                             <b>3.2.</b>
                         
-                         Channel Builder
+                         Channel Builder设计与代码实现
                     </a>
                 
             
@@ -328,13 +338,67 @@
         </li>
     
         
-        <li class="chapter " data-level="3.3" data-path="channel/class_CallOptions.html">
+        <li class="chapter " data-level="3.3" data-path="channel/channel_provider/index.html">
+            
+                
+                    <a href="../channel/channel_provider/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                         Channel Provider设计与代码实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.3.1" data-path="channel/channel_provider/class_ManagedChannelProvider.html">
+            
+                
+                    <a href="../channel/channel_provider/class_ManagedChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                         类ManagedChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.2" data-path="channel/channel_provider/class_NettyChannelProvider.html">
+            
+                
+                    <a href="../channel/channel_provider/class_NettyChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                         类NettyChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.4" data-path="channel/class_CallOptions.html">
             
                 
                     <a href="../channel/class_CallOptions.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.3.</b>
+                            <b>3.4.</b>
                         
                          类CallOptions
                     </a>
@@ -675,11 +739,14 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_15">
+                    <section class="normal" id="section-gitbook_21">
                     
-                        <h1 id="channel">Channel</h1>
+                        <h1 id="channel">Channel层</h1>
 <p><code>Channel</code> 提供在 <code>transport</code> 层之上的抽象，设计用来被 <code>stub</code> 调用。Channel 和相关的 <code>ClientCall</code> 和 <code>ClientCall.Listener</code> 交换被解析的请求(request)和应答(response)对象，而 transport 层仅仅处理序列化后的数据。</p>
 <p>应用可以通过使用 <code>ClientInterceptor</code> 装饰 <code>Channel</code> 来实现添加通用的横切行为到 stub 上。预期大部分应用代码将不会直接使用这个类，而是使用已经绑定到 Channel 的 stub， 而 Channel 在应用初始化时已经被装饰好。</p>
+<blockquote>
+<p>注： 上面两段内容翻译自 类 io.grpc.Channel 的 javadoc.</p>
+</blockquote>
 
                     
                     </section>
@@ -690,8 +757,10 @@
         </div>
 
         
-        <a href="../grpc/source_navigating.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 源码导航"><i class="fa fa-angle-left"></i></a>
+        <a href="../grpc/source_navigating.html" class="navigation navigation-prev " aria-label="Previous page: 源码导航"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../channel/channel/index.html" class="navigation navigation-next " aria-label="Next page: Channel设计与代码实现"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

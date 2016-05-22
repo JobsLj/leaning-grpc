@@ -32,7 +32,7 @@
 
 
         
-    <div class="book" data-level="0" data-basepath="." data-revision="1463909435237">
+    <div class="book" data-level="0" data-basepath="." data-revision="1463910624419">
     
 
 <div class="book-summary">
@@ -212,19 +212,27 @@
                 
     
         
-        <li class="chapter " data-level="3.1" >
+        <li class="chapter " data-level="3.1" data-path="channel/channel/index.html">
             
-            <span><b>3.1.</b> Channel</span>
+                
+                    <a href="./channel/channel/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         Channel设计与代码实现
+                    </a>
+                
             
             
             <ul class="articles">
                 
     
         
-        <li class="chapter " data-level="3.1.1" data-path="channel/class_Channel.html">
+        <li class="chapter " data-level="3.1.1" data-path="channel/channel/class_Channel.html">
             
                 
-                    <a href="./channel/class_Channel.html">
+                    <a href="./channel/channel/class_Channel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.1.</b>
@@ -237,10 +245,10 @@
         </li>
     
         
-        <li class="chapter " data-level="3.1.2" data-path="channel/class_ManagedChannel.html">
+        <li class="chapter " data-level="3.1.2" data-path="channel/channel/class_ManagedChannel.html">
             
                 
-                    <a href="./channel/class_ManagedChannel.html">
+                    <a href="./channel/channel/class_ManagedChannel.html">
                         <i class="fa fa-check"></i>
                         
                             <b>3.1.2.</b>
@@ -266,7 +274,7 @@
                         
                             <b>3.2.</b>
                         
-                         Channel Builder
+                         Channel Builder设计与代码实现
                     </a>
                 
             
@@ -328,13 +336,67 @@
         </li>
     
         
-        <li class="chapter " data-level="3.3" data-path="channel/class_CallOptions.html">
+        <li class="chapter " data-level="3.3" data-path="channel/channel_provider/index.html">
+            
+                
+                    <a href="./channel/channel_provider/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                         Channel Provider设计与代码实现
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.3.1" data-path="channel/channel_provider/class_ManagedChannelProvider.html">
+            
+                
+                    <a href="./channel/channel_provider/class_ManagedChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                         类ManagedChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3.2" data-path="channel/channel_provider/class_NettyChannelProvider.html">
+            
+                
+                    <a href="./channel/channel_provider/class_NettyChannelProvider.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                         类NettyChannelProvider
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.4" data-path="channel/class_CallOptions.html">
             
                 
                     <a href="./channel/class_CallOptions.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>3.3.</b>
+                            <b>3.4.</b>
                         
                          类CallOptions
                     </a>
@@ -675,38 +737,40 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_3">
                     
-                        <h1 id="grpc">Grpc学习笔记</h1>
+                        <h1 id="grpc">gRPC学习笔记</h1>
 <blockquote>
-<p>注: 如果你看到的是github的源代码, 请点击 <a href="http://skyao.github.io/leaning-grpc/" target="_blank">这里</a> 查看html内容.</p>
+<p>注: 如果你看到的是github的源代码, 请点击 <a href="http://skyao.github.io/leaning-grpc/" target="_blank">这里</a> 查看html静态内容.</p>
 </blockquote>
 <h1 id="">介绍</h1>
 <p>gRPC是google最新发布(2015年2月底)的开源RPC框架, 声称是&quot;一个高性能，开源，将移动和HTTP/2放在首位的通用的RPC框架.&quot;. 技术栈非常的新, 基于HTTP/2, netty4.1, proto3, 拥有非常丰富而实用的特性, 堪称新一代RPC框架的典范.</p>
-<p>这份学习比较记录google gRPC学习过程中的各种资料和信息，已经实际使用过程的心得, 另外针对性的翻译了部分特别有价值的英文资料。</p>
+<p>这份学习笔记记录google gRPC学习过程中的各种资料和信息，已经实际使用过程的心得, 另外针对性的翻译了部分特别有价值的英文资料。</p>
 <blockquote>
-<p>注: <strong>grpc目前已经进入beta阶段</strong>, 已经可以考虑在正式产品中使用. 当然，期待正式版尽快发布!</p>
+<p>注: <strong>grpc目前已经进入beta阶段</strong>, 最新版本0.14.0, API版本已经基本稳定，可以在正式产品中使用. 当然，期待正式版尽快发布!</p>
 </blockquote>
 <h1 id="">实践</h1>
-<p>在2016年3月，我开始带领团队基于gPRC构建自己公司的RPC框架，基本技术选型是以gRPC + springboot + consul，希望构建一个性能良好，架构优雅，使用方便的微服务框架。目前进展顺利，按照计划会在2016年底开源，敬请期待。</p>
+<p>在2016年3月，我开始带领团队基于gPRC构建自己公司的RPC框架，基本技术选型是以gRPC + springboot + consul，希望构建一个性能良好，架构优雅，使用方便的微服务框架。</p>
+<p>目前进展顺利，这个名为 <code>Dolphin</code> 的微服务框架，按照计划会在2016年底代码基本稳定时开源，敬请期待。</p>
 <h1 id="">内容</h1>
 <ul>
 <li><a href="introduction/index.html">gPRC 介绍</a><ul>
 <li><a href="introduction/information.html">资料收集整理</a></li>
-<li><a href="proto3/index.html">Protocol Buffer 3(翻译)</a></li>
+<li><a href="proto3/index.html">Protocol Buffer 3</a></li>
 </ul>
 </li>
 <li><a href="grpc/index.html">gPRC文档</a><ul>
 <li><a href="grpc/official_docs.html">gRPC官方文档(中文版)</a></li>
-<li><a href="grpc/motivation.html">gRPC动机和设计原则(翻译)</a></li>
-<li><a href="grpc/source_navigating.html">源码导航(翻译)</a></li>
+<li><a href="grpc/motivation.html">gRPC动机和设计原则</a></li>
+<li><a href="grpc/source_navigating.html">源码导航</a></li>
 </ul>
 </li>
-<li><a href="client/index.html">客户端</a></li>
-<li><a href="server/index.html">服务器端</a></li>
-<li><a href="common/index.html">通用代码</a></li>
+<li><a href="channel/index.html">Channel层</a></li>
+<li><a href="stub/index.html">Stub层</a></li>
+<li><a href="client/index.html">客户端流程</a></li>
+<li><a href="server/index.html">服务器端流程</a></li>
 <li><a href="action/index.html">实战</a><ul>
-<li><a href="action/springboot/springboot.html">集成SpringBoot</a></li>
+<li><a href="action/springboot/springboot.html">集成Spring Boot</a></li>
 <li><a href="action/documentation/index.html">文档生成</a></li>
 </ul>
 </li>
