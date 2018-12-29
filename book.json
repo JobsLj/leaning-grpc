@@ -1,26 +1,33 @@
 {
-  "author": "Sky Ao <aoxiaojian@gmail.cn>",
+  "gitbook": ">=3.2.0",
   "description": "gRPC学习笔记",
+  "language": "zh-hans",
+  "author": "Sky Ao <aoxiaojian@gmail.com>",
   "extension": null,
   "generator": "site",
-  "sidebar": {
-    "Sky@gitbook": "https://skyao.gitbooks.io"
+  "links" : {
+    "sidebar" : {
+        "Sky@Gitbook": "https://skyao.gitbooks.io"
+    }
   },
-  "output": null,
-  "pdf": {
-    "fontSize": 12,
-    "footerTemplate": null,
-    "headerTemplate": null,
-    "margin": {
-      "bottom": 36,
-      "left": 62,
-      "right": 62,
-      "top": 36
+  "structure" : {
     },
-    "pageNumbers": false,
-    "paperSize": "a4"
+  "plugins": [
+    "splitter",
+    "-search",
+    "-sharing",
+    "edit-link",
+	"devops"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+        "base": "https://github.com/skyao/learning-grpc/edit/master",
+        "label": "Edit"
+    },
+	"devops":{
+		"bd_token": "c7442f5794ea2abb71c6ff05dc0b8779"
+	}
   },
-  "plugins": [],
   "title": "gRPC学习笔记",
   "variables": {
   }
